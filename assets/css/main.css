@@ -6,7 +6,7 @@
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root { 
+:root {
   --background-color: #101a20; /* Background color for the entire website, including individual sections */
   --default-color: #e7f2f7; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #ffffff; /* Color for headings, subheadings and title throughout the website */
@@ -855,38 +855,52 @@ section,
 
 .hero .hero-image .floating-elements .floating-card {
   position: absolute;
-  background: var(--surface-color);
-  padding: 15px 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px color-mix(in srgb, var(--default-color), transparent 90%);
+  background: rgba(20, 31, 38, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 14px 22px;
+  border-radius: 14px;
+  border: 1px solid rgba(19, 135, 193, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(19, 135, 193, 0.1);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-weight: 600;
-  animation: float 3s ease-in-out infinite;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.hero .hero-image .floating-elements .floating-card:hover {
+  transform: translateY(-4px) scale(1.05);
+  border-color: rgba(19, 135, 193, 0.6);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(19, 135, 193, 0.2);
 }
 
 .hero .hero-image .floating-elements .floating-card i {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--accent-color);
+  filter: drop-shadow(0 0 6px rgba(19, 135, 193, 0.4));
 }
 
 .hero .hero-image .floating-elements .floating-card.design {
-  top: 10%;
-  right: -10%;
-  animation-delay: 0s;
+  top: 8%;
+  right: -8%;
+  animation: floatDesign 5s ease-in-out infinite;
 }
 
 .hero .hero-image .floating-elements .floating-card.code {
-  bottom: 30%;
-  left: -15%;
-  animation-delay: 1s;
+  bottom: 28%;
+  left: -12%;
+  animation: floatCode 6s ease-in-out infinite;
 }
 
 .hero .hero-image .floating-elements .floating-card.creativity {
-  top: 60%;
-  right: -5%;
-  animation-delay: 2s;
+  bottom: 5%;
+  right: -6%;
+  animation: floatCreativity 5.5s ease-in-out infinite;
 }
 
 @media (max-width: 992px) {
@@ -895,15 +909,45 @@ section,
   }
 }
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
+@keyframes floatDesign {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
   }
-
+  25% {
+    transform: translateY(-12px) translateX(4px);
+  }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-6px) translateX(-3px);
+  }
+  75% {
+    transform: translateY(-14px) translateX(2px);
+  }
+}
+
+@keyframes floatCode {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  30% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+  60% {
+    transform: translateY(-16px) translateX(3px);
+  }
+}
+
+@keyframes floatCreativity {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+  }
+  20% {
+    transform: translateY(-8px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-14px) translateX(-2px);
+  }
+  80% {
+    transform: translateY(-6px) translateX(4px);
   }
 }
 
